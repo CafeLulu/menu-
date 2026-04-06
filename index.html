@@ -231,6 +231,68 @@ function show(id){
 }
 
 </script>
+<audio id="addSound" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"></audio>
+<audio id="removeSound" src="https://assets.mixkit.co/active_storage/sfx/2570/2570-preview.mp3"></audio>
+<script>
 
+let cart = {};
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("addSound").volume = 0.3;
+    document.getElementById("removeSound").volume = 0.2;
+});
+
+function add(name, price){
+    if(!cart[name]){
+        cart[name] = {qty:0, price:price};
+    }
+    cart[name].qty++;
+
+    document.getElementById("addSound").play();
+
+    render();
+}
+
+function remove(name){
+    if(cart[name]){
+        cart[name].qty--;
+        if(cart[name].qty <= 0){
+            delete cart[name];
+        }
+    }
+
+    document.getElementById("removeSound").play();
+
+    render();
+}
+
+function render(){
+    let html = "";
+    let total = 0;
+
+    for(let item in cart){
+        let c = cart[item];
+        let sub = c.qty * c.price;
+        total += sub;
+
+        html += `
+        <div>
+            ${item} x${c.qty} → $${sub}
+            <button onclick="add('${item}', ${c.price})">+</button>
+            <button onclick="remove('${item}')">-</button>
+        </div>
+        `;
+    }
+
+    document.getElementById("cartItems").innerHTML = html || "Vacío";
+    document.getElementById("total").innerText = "Total: $" + total;
+}
+
+function show(id){
+    document.querySelectorAll('.section').forEach(s=>s.style.display="none");
+    document.getElementById(id).style.display="block";
+}
+
+</script>
 </body>
 </html>
