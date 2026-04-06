@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Café Lulù</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Poppins&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+<style>
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #0f1c2e;
+    color: #ff7a00;
+    background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 55px;
+    text-align: center;
+}
+
+.menu-title {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+}
+
+/* BOTONES */
+.nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.nav button {
+    background: #ff7a00;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+/* SECCIONES */
+.section {
+    display: none;
+    max-width: 650px;
+    margin: auto;
+    padding: 20px;
+}
+
+.active {
+    display: block;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.item button {
+    background: #ff7a00;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* CARRITO */
+.cart {
+    background: rgba(0,0,0,0.4);
+    padding: 15px;
+    margin: 15px;
+    border-radius: 10px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+.cart-controls button {
+    margin: 0 3px;
+    padding: 2px 8px;
+}
+
+.total {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* ESPECIAL */
+.especial-box {
+    border: 2px solid #ff7a00;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Café Lulù</h1>
+<div class="menu-title">Menú</div>
+
+<div class="cart">
+    <h3>🧾 Tu pedido</h3>
+    <div id="cartItems">Vacío</div>
+    <div class="total" id="total">Total: $0</div>
+</div>
+
+<div class="nav">
+<button onclick="show('cafes')">☕ Cafés</button>
+<button onclick="show('frias')">🥤 Frías</button>
+<button onclick="show('panaderia')">🥐 Panadería</button>
+<button onclick="show('especial')">⭐ Especial</button>
+</div>
+
+<!-- CAFES -->
+<div id="cafes" class="section">
+<h2>Cafés</h2>
+<div class="item">Café solo <div><button onclick="add('Café solo',1500)">+</button></div></div>
+<div class="item">Café con leche <button onclick="add('Café con leche',2000)">+</button></div>
+<div class="item">Cappuccino <button onclick="add('Cappuccino',3000)">+</button></div>
+<div class="item">Lágrima <button onclick="add('Lágrima',3000)">+</button></div>
+<div class="item">Té saborizado <button onclick="add('Té saborizado',1500)">+</button></div>
+<div class="item">Mate cocido con leche <button onclick="add('Mate cocido con leche',1000)">+</button></div>
+<div class="item">Té común <button onclick="add('Té común',1000)">+</button></div>
+</div>
+
+<!-- FRIAS -->
+<div id="frias" class="section">
+<h2>Bebidas frías</h2>
+<div class="item">Licuado <button onclick="add('Licuado',4500)">+</button></div>
+<div class="item">Chocolatada <button onclick="add('Chocolatada',3000)">+</button></div>
+<div class="item">Smoothie <button onclick="add('Lemuthi',4500)">+</button></div>
+<div class="item">Frappuccino <button onclick="add('Frappuccino',4500)">+</button></div>
+<div class="item">Jugo de naranja <button onclick="add('Jugo de naranja',2000)">+</button></div>
+</div>
+
+<!-- PANADERIA -->
+<div id="panaderia" class="section">
+<h2>Panadería</h2>
+<div class="item">Bizcochuelo <button onclick="add('Bizcochuelo',3000)">+</button></div>
+<div class="item">Tostado de jamón y queso <button onclick="add('Sándwich de jamón y queso',4000)">+</button></div>
+<div class="item">Medialuna <button onclick="add('Medialuna',1000)">+</button></div>
+<div class="item">Donas <button onclick="add('Donuts',1000)">+</button></div>
+<div class="item">Pan casero <button onclick="add('Pan casero',500)">+</button></div>
+</div>
+
+<!-- ESPECIAL -->
+<div id="especial" class="section">
+<div class="especial-box">
+<h2>⭐ Especial de Lulù</h2>
+<p>Café con leche + 3 tostadas + mermelada, queso crema o dulce de leche + jugo de naranja</p>
+<button onclick="add('Especial de Lulù',5000)">Agregar</button>
+</div>
+</div>
+
+<script>
+
+let cart = {};
+
+function add(name, price){
+    if(!cart[name]){
+        cart[name] = {qty:0, price:price};
+    }
+    cart[name].qty++;
+    render();
+}
+
+function remove(name){
+    if(cart[name]){
+        cart[name].qty--;
+        if(cart[name].qty <= 0){
+            delete cart[name];
+        }
+    }
+    render();
+}
+
+function render(){
+    let html = "";
+    let total = 0;
+
+    for(let item in cart){
+        let c = cart[item];
+        let sub = c.qty * c.price;
+        total += sub;
+
+        html += `
+        <div class="cart-item">
+            ${item} x${c.qty} → $${sub}
+            <div class="cart-controls">
+                <button onclick="add('${item}', ${c.price})">+</button>
+                <button onclick="remove('${item}')">-</button>
+            </div>
+        </div>
+        `;
+    }
+
+    document.getElementById("cartItems").innerHTML = html || "Vacío";
+    document.getElementById("total").innerText = "Total: $" + total;
+}
+
+function show(id){
+    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+}
+
+</script>
+
+</body>
+</html>
