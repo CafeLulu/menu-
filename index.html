@@ -248,7 +248,9 @@ function add(name, price){
     }
     cart[name].qty++;
 
-    document.getElementById("addSound").play();
+    let sound = document.getElementById("addSound");
+sound.currentTime = 0;
+sound.play().catch(() => {});
 
     render();
 }
@@ -261,7 +263,9 @@ function remove(name){
         }
     }
 
-    document.getElementById("removeSound").play();
+   let sound = document.getElementById("removeSound");
+sound.currentTime = 0;
+sound.play().catch(() => {});
 
     render();
 }
