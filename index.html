@@ -122,10 +122,10 @@ h1 {
 </div>
 
 <div class="nav">
-<button onclick="show('cafes')">☕ Cafés</button>
-<button onclick="show('frias')">🥤 Frías</button>
-<button onclick="show('panaderia')">🥐 Panadería</button>
-<button onclick="show('especial')">⭐ Especial</button>
+    <button onclick="show('cafes'); playMenuSound()">☕ Cafés</button>
+    <button onclick="show('frias'); playMenuSound()">🥤 Frías</button>
+    <button onclick="show('panaderia'); playMenuSound()">🥐 Panadería</button>
+    <button onclick="show('especial'); playMenuSound()">⭐ Especial</button>
 </div>
 
 <!-- CAFES -->
@@ -246,8 +246,17 @@ function show(id){
     document.getElementById(id).classList.add('active');
 }
 
+function playMenuSound(){
+    let sound = document.getElementById("menuSound");
+    if(sound){
+        sound.pause();
+        sound.currentTime = 0;
+        sound.play().catch(()=>{});
+}
+
 </script>
 <audio id="addSound" src="add.mp3" preload="auto"></audio>
 <audio id="removeSound" src="remove.mp3" preload="auto"></audio>
+<audio id="menuSound" src="https://tu-github.com/ruta/opciones.mp3" preload="auto"></audio>
 </body>
 </html>
