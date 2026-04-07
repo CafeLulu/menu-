@@ -101,11 +101,21 @@ h1 {
 
 /* ESPECIAL */
 .especial-box {
+    position: relative; /* importante para posicionar el precio */
     border: 2px solid #ff7a00;
     padding: 20px;
     border-radius: 15px;
     text-align: center;
-    margin-bottom: 15px; /* 👈 espacio entre combos */
+    margin-bottom: 15px; /* espacio entre combos */
+}
+
+.precio-especial {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    font-weight: bold;
+    color: #ff7a00;
+    font-size: 18px;
 }
     
 </style>
@@ -132,26 +142,76 @@ h1 {
 <!-- CAFES -->
 <div id="cafes" class="section">
 <h2>Cafés</h2>
-<div class="item">Café solo <div><button onclick="add('Café solo',1500)">+</button></div></div>
-<div class="item">Café con leche <button onclick="add('Café con leche',2000)">+</button></div>
-<div class="item">Cappuccino <button onclick="add('Cappuccino',3000)">+</button></div>
-<div class="item">Lágrima <button onclick="add('Lágrima',3000)">+</button></div>
-<div class="item">Té saborizado <button onclick="add('Té saborizado',1500)">+</button></div>
-<div class="item">Mate cocido con leche <button onclick="add('Mate cocido con leche',1000)">+</button></div>
-<div class="item">Té común <button onclick="add('Té común',1000)">+</button></div>
+
+<div class="item">
+    <span>Café solo</span>
+    <div><span>$1500</span><button onclick="add('Café solo',1500)">+</button></div>
+</div>
+
+<div class="item">
+    <span>Café con leche</span>
+    <div><span>$2000</span><button onclick="add('Café con leche',2000)">+</button></div>
+</div>
+
+<div class="item">
+    <span>Cappuccino</span>
+    <div><span>$3000</span><button onclick="add('Cappuccino',3000)">+</button></div>
+</div>
+
+<div class="item">
+    <span>Lágrima</span>
+    <div><span>$3000</span><button onclick="add('Lágrima',3000)">+</button></div>
+</div>
+
+<div class="item">
+    <span>Té saborizado</span>
+    <div><span>$1500</span><button onclick="add('Té saborizado',1500)">+</button></div>
+</div>
+
+<div class="item">
+    <span>Mate cocido con leche</span>
+    <div><span>$1000</span><button onclick="add('Mate cocido con leche',1000)">+</button></div>
+</div>
+
+<div class="item">
+    <span>Té común</span>
+    <div><span>$1000</span><button onclick="add('Té común',1000)">+</button></div>
+</div>
+
 </div>
 
 <!-- FRIAS -->
 <div id="frias" class="section">
 <h2>Bebidas frías</h2>
-<div class="item">Licuado <button onclick="add('Licuado',4500)">+</button></div>
-<div class="item">Chocolatada <button onclick="add('Chocolatada',3000)">+</button></div>
-<div class="item">Smoothie <button onclick="add('Smoothie',4500)">+</button></div>
-<div class="item">Frappuccino <button onclick="add('Frappuccino',4500)">+</button></div>
-<div class="item">Jugo de naranja <button onclick="add('Jugo de naranja',2000)">+</button></div>
+
 <div class="item">
-<span>Agua </span>
-<button onclick="add('Agua',1000)">+</button>
+    <span>Licuado</span>
+    <div><span>$4500</span><button onclick="add('Licuado',4500)">+</button></div>
+</div>
+
+<div class="item">
+    <span>Chocolatada</span>
+    <div><span>$3000</span><button onclick="add('Chocolatada',3000)">+</button></div>
+</div>
+
+<div class="item">
+    <span>Smoothie</span>
+    <div><span>$4500</span><button onclick="add('Smoothie',4500)">+</button></div>
+</div>
+
+<div class="item">
+    <span>Frappuccino</span>
+    <div><span>$4500</span><button onclick="add('Frappuccino',4500)">+</button></div>
+</div>
+
+<div class="item">
+    <span>Jugo de naranja</span>
+    <div><span>$2000</span><button onclick="add('Jugo de naranja',2000)">+</button></div>
+</div>
+
+<div class="item">
+    <span>Agua</span>
+    <div><span>$1000</span><button onclick="add('Agua',1000)">+</button></div>
 </div>
 
 </div>
@@ -159,43 +219,68 @@ h1 {
 <!-- PANADERIA -->
 <div id="panaderia" class="section">
 <h2>Panadería</h2>
-<div class="item">Bizcochuelo <button onclick="add('Bizcochuelo',3000)">+</button></div>
-<div class="item">Tostado de jamón y queso <button onclick="add('Tostado de jamón y queso',3500)">+</button></div>
-<div class="item">Medialuna <button onclick="add('Medialuna',1000)">+</button></div>
-<div class="item">Donas <button onclick="add('Donas',1000)">+</button></div>
-<div class="item">Pan casero <button onclick="add('Pan casero',500)">+</button></div>
+
 <div class="item">
-<span>Chipa </span>
-<button onclick="add('Chipa',1500)">+</button>
+    <span>Bizcochuelo</span>
+    <div><span>$3000</span><button onclick="add('Bizcochuelo',3000)">+</button></div>
+</div>
+
+<div class="item">
+    <span>Tostado de jamón y queso</span>
+    <div><span>$3500</span><button onclick="add('Tostado de jamón y queso',3500)">+</button></div>
+</div>
+
+<div class="item">
+    <span>Medialuna</span>
+    <div><span>$1000</span><button onclick="add('Medialuna',1000)">+</button></div>
+</div>
+
+<div class="item">
+    <span>Donas</span>
+    <div><span>$1000</span><button onclick="add('Donas',1000)">+</button></div>
+</div>
+
+<div class="item">
+    <span>Pan casero</span>
+    <div><span>$500</span><button onclick="add('Pan casero',500)">+</button></div>
+</div>
+
+<div class="item">
+    <span>Chipa</span>
+    <div><span>$1500</span><button onclick="add('Chipa',1500)">+</button></div>
 </div>
 
 </div>
 
 <!-- ESPECIAL -->
 <div id="especial" class="section">
-<div class="especial-box">
-<h2>⭐ Especial de Lulù</h2>
-<p>Café con leche + 3 tostadas + mermelada, queso crema o dulce de leche + jugo de naranja</p>
-<button onclick="add('Especial de Lulù',5000)">Agregar</button>
-</div>
-    
-<div class="especial-box">
-<h2> ☕ Tradicional</h2>
-<p>Café con leche + 3 medialunas + jugo de naranja</p>
-<button onclick="add('Tradicional',5000)">Agregar</button>
-</div>
+  <div class="especial-box">
+    <h2>⭐ Especial de Lulù</h2>
+    <p>Café con leche + 3 tostadas + mermelada, queso crema o dulce de leche + jugo de naranja</p>
+    <button onclick="add('Especial de Lulù',5000)">Agregar</button>
+    <span class="precio-especial">$5000</span>
+  </div>
 
-<div class="especial-box">
-<h2> 🥪 Salado</h2>
-<p>Café con leche + 2 tostados de jamon y queso</p>
-<button onclick="add('Salado',6000)">Agregar</button>
-</div>    
+  <div class="especial-box">
+    <h2>Tradicional</h2>
+    <p>Café con leche + 3 medialunas + jugo de naranja</p>
+    <button onclick="add('Tradicional',5000)">Agregar</button>
+    <span class="precio-especial">$5000</span>
+  </div>
 
-<div class="especial-box">
-<h2> 🍩 Dulce</h2>
-<p>Café con leche + bizcochuelo + 2 donas</p>
-<button onclick="add('Dulce',5000)">Agregar</button>
-</div>       
+  <div class="especial-box">
+    <h2>Salado</h2>
+    <p>Café con leche + 2 tostados de jamón y queso</p>
+    <button onclick="add('Salado',5000)">Agregar</button>
+    <span class="precio-especial">$5000</span>
+  </div>
+
+  <div class="especial-box">
+    <h2>Dulce</h2>
+    <p>Café con leche + bizcochuelo + 2 donas</p>
+    <button onclick="add('Dulce',5000)">Agregar</button>
+    <span class="precio-especial">$5000</span>
+  </div>
 </div>
 
 <script>
