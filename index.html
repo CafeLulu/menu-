@@ -135,11 +135,47 @@ h1 {
     font-weight: bold;
     cursor: pointer;
 }    
+
+.inicio {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0f1c2e;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    z-index: 999;
+}
+
+.inicio input {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+}
+
+.inicio button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #ff7a00;
+    color: white;
+    cursor: pointer;
+}    
     
 </style>
 </head>
 
 <body>
+
+<div id="inicio" class="inicio">
+    <h2>Bienvenido a Café Lulù ☕</h2>
+    <input type="text" id="nombreCliente" placeholder="Ingresá tu nombre">
+    <button onclick="entrar()">Entrar</button>
+</div>    
 
 <h1>Café Lulù</h1>
 <div class="menu-title">Menú</div>
@@ -370,6 +406,19 @@ function show(id){
     document.getElementById(id).classList.add('active');
 }
 
+function entrar(){
+    let nombre = document.getElementById("nombreCliente").value;
+
+    if(nombre.trim() === ""){
+        alert("Poné tu nombre 😄");
+        return;
+    }
+
+    localStorage.setItem("nombreCliente", nombre);
+
+    document.getElementById("inicio").style.display = "none";
+}    
+
 function playMenuSound(){
     let sound = document.getElementById("menuSound");
     if(sound){
@@ -380,7 +429,9 @@ function playMenuSound(){
 }    
     
 function enviarWhatsApp(){
-    let mensaje = "🧾 *Pedido Café Lulù* \n\n";
+let nombre = localStorage.getItem("nombreCliente") || "Cliente";
+
+let mensaje = `🧾 Pedido de: ${nombre}\n\n`;
     let total = 0;
 
     for(let item in cart){
