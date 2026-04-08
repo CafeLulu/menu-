@@ -123,6 +123,18 @@ h1 {
     color: #ff7a00;
     font-size: 18px;
 }
+
+.cart button {
+    margin-top: 10px;
+    width: 100%;
+    padding: 12px;
+    background: #25D366; /* color WhatsApp */
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}    
     
 </style>
 </head>
@@ -143,6 +155,7 @@ h1 {
     <button onclick="show('frias'); playMenuSound()">🥤 Frías</button>
     <button onclick="show('panaderia'); playMenuSound()">🥐 Panadería</button>
     <button onclick="show('especial'); playMenuSound()">⭐ Especial</button>
+    <button onclick="enviarWhatsApp()">📲 Enviar pedido</button>
 </div>
 
 <!-- CAFES -->
@@ -363,7 +376,29 @@ function playMenuSound(){
         sound.currentTime = 0;
         sound.play().catch(()=>{});
     }
+    
+function enviarWhatsApp(){
+    let mensaje = "🧾 *Pedido Café Lulù* \n\n";
+    let total = 0;
+
+    for(let item in cart){
+        let c = cart[item];
+        let sub = c.qty * c.price;
+        total += sub;
+
+        mensaje += `${item} x${c.qty} → $${sub}\n`;
+    }
+
+    mensaje += `\n💰 Total: $${total}`;
+
+    let numero = "5491124784841"; // 👈 tu número (ej: 5491123456789)
+
+    let url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+
+    window.open(url, "_blank");
+    }    
 }
+    
 </script>
 <audio id="addSound" src="add.mp3" preload="auto"></audio>
 <audio id="removeSound" src="remove.mp3" preload="auto"></audio>
