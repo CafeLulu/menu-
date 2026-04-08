@@ -181,7 +181,7 @@ h1 {
 <div class="menu-title">Menú</div>
 
 <div class="cart">
-    <h3>🧾 Tu pedido</h3>
+    <h3 id="tituloPedido">🧾 Tu pedido</h3>
     <div id="cartItems">Vacío</div>
     <div class="total" id="total">Total: $0</div>
 
@@ -417,6 +417,11 @@ function entrar(){
     localStorage.setItem("nombreCliente", nombre);
 
     document.getElementById("inicio").style.display = "none";
+}    
+
+function actualizarNombrePedido(){
+    let nombre = localStorage.getItem("nombreCliente") || "Cliente";
+    document.getElementById("tituloPedido").innerText = "🧾 Pedido de " + nombre;
 }    
 
 function playMenuSound(){
