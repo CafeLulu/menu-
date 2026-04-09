@@ -518,9 +518,11 @@ function playMenuSound(){
 }    
     
 function enviarWhatsApp(){
-let nombre = localStorage.getItem("nombreCliente") || "Cliente";
+    let nombre = localStorage.getItem("nombreCliente") || "Cliente";
+    let mesa = 1; // 👈 misma mesa que usás arriba
 
-let mensaje = `🧾 Pedido de: ${nombre}\n\n`;
+    let mensaje = `🧾 Pedido de: ${nombre}\n🪑 Mesa: ${mesa}\n\n`;
+
     let total = 0;
 
     for(let item in cart){
@@ -533,12 +535,12 @@ let mensaje = `🧾 Pedido de: ${nombre}\n\n`;
 
     mensaje += `\n💰 Total: $${total}`;
 
-    let numero = "5491124784841"; // 👈 tu número (ej: 5491123456789)
+    let numero = "5491124784841";
 
     let url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
 
     window.open(url, "_blank");
-    }    
+}
     
 </script>
 <audio id="addSound" src="add.mp3" preload="auto"></audio>
