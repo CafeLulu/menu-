@@ -240,9 +240,22 @@ h1 {
 <div id="frias" class="section">
 <h2>Bebidas frías</h2>
 
-<div class="item">
-    <span>Licuado</span>
-    <div><span>$4500</span><button onclick="add('Licuado',4500)">+</button></div>
+<div class="item" onclick="toggleLicuado()" style="cursor:pointer;">
+    <span>🥤 Licuado ⬇️</span>
+</div>
+
+<div id="opcionesLicuado" style="display:none; margin-left:20px;">
+
+    <div class="item">
+        <span>Licuado de banana</span>
+        <div><span>$4500</span><button onclick="add('Licuado de banana',4500)">+</button></div>
+    </div>
+
+    <div class="item">
+        <span>Licuado de frutilla</span>
+        <div><span>$4500</span><button onclick="add('Licuado de frutilla',4500)">+</button></div>
+    </div>
+
 </div>
 
 <div class="item">
@@ -433,6 +446,16 @@ function actualizarNombrePedido(){
 
     document.getElementById("tituloPedido").innerText =
     "🧾 Pedido de " + nombre + "   🪑 Mesa " + mesa;
+}    
+
+function toggleLicuado(){
+    let opciones = document.getElementById("opcionesLicuado");
+
+    if(opciones.style.display === "none"){
+        opciones.style.display = "block";
+    } else {
+        opciones.style.display = "none";
+    }
 }    
 
 function playMenuSound(){
