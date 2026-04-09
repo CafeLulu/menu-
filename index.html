@@ -237,20 +237,24 @@ h1 {
 </div>
 
 <!-- FRIAS -->
+<!-- FRIAS -->
+<div id="frias" class="section">
+<h2>Bebidas frías</h2>
+
+<!-- LICUADO DESPLEGABLE -->
 <div class="item" onclick="toggleLicuado()" style="cursor:pointer;">
     <span>Licuado</span>
     <div>
         <span>$4500</span>
-        <span>⬇️</span>
+        <span>▼</span>
     </div>
 </div>
 
-<div id="opcionesLicuado" style="display:none; margin-left:20px;">
+<div id="opcionesLicuado" style="display:none;">
 
     <div class="item">
         <span>Licuado de banana</span>
         <div>
-            <span>$4500</span>
             <button onclick="add('Licuado de banana',4500)">+</button>
         </div>
     </div>
@@ -258,10 +262,13 @@ h1 {
     <div class="item">
         <span>Licuado de frutilla</span>
         <div>
-            <span>$4500</span>
             <button onclick="add('Licuado de frutilla',4500)">+</button>
         </div>
+    </div>
 
+</div>
+
+<!-- RESTO NORMAL -->
 <div class="item">
     <span>Chocolatada</span>
     <div><span>$3000</span><button onclick="add('Chocolatada',3000)">+</button></div>
@@ -287,7 +294,7 @@ h1 {
     <div><span>$1000</span><button onclick="add('Agua',1000)">+</button></div>
 </div>
 
-</div>
+</div> 
 
 <!-- PANADERIA -->
 <div id="panaderia" class="section">
