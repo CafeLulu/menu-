@@ -426,6 +426,15 @@ function actualizarNombrePedido(){
     document.getElementById("tituloPedido").innerText = "🧾 Pedido de " + nombre;
 }
 
+function actualizarNombrePedido(){
+    let nombre = localStorage.getItem("nombreCliente") || "Cliente";
+
+    let mesa = 1; // 👈 FIJO en mesa 1
+
+    document.getElementById("tituloPedido").innerText =
+    "🧾 Pedido de " + nombre + " | Mesa " + mesa;
+}    
+
 function playMenuSound(){
     let sound = document.getElementById("menuSound");
     if(sound){
