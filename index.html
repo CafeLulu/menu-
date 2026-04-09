@@ -394,6 +394,13 @@ h1 {
 
 <script>
 
+let mesa = obtenerMesa();
+
+function obtenerMesa(){
+    let params = new URLSearchParams(window.location.search);
+    return params.get("mesa") || "1";
+}
+    
 let cart = {};
 
 function add(name, price){
@@ -482,11 +489,9 @@ function actualizarNombrePedido(){
 function actualizarNombrePedido(){
     let nombre = localStorage.getItem("nombreCliente") || "Cliente";
 
-    let mesa = 1; // 👈 FIJO en mesa 1
-
     document.getElementById("tituloPedido").innerText =
     "🧾 Pedido de " + nombre + "   👉 Mesa " + mesa;
-}    
+}
 
 function toggleLicuado(){
     let opciones = document.getElementById("opcionesLicuado");
@@ -519,9 +524,8 @@ function playMenuSound(){
     
 function enviarWhatsApp(){
     let nombre = localStorage.getItem("nombreCliente") || "Cliente";
-    let mesa = 1; // 👈 misma mesa que usás arriba
 
-    let mensaje = `🧾 Pedido de: ${nombre}\n🪑 Mesa: ${mesa}\n\n`;
+    let mensaje = `🧾 Pedido de: ${nombre}\n👉 Mesa: ${mesa}\n\n`;
 
     let total = 0;
 
