@@ -274,9 +274,38 @@ h1 {
     <div><span>$3000</span><button onclick="add('Chocolatada',3000)">+</button></div>
 </div>
 
-<div class="item">
+<!-- SMOOTHIE DESPLEGABLE -->
+<div class="item" onclick="toggleSmoothie()" style="cursor:pointer;">
     <span>Smoothie</span>
-    <div><span>$4500</span><button onclick="add('Smoothie',4500)">+</button></div>
+    <div>
+        <span>$4500</span>
+        <span>▼</span>
+    </div>
+</div>
+
+<div id="opcionesSmoothie" style="display:none; margin-left:10px;">
+
+    <div class="item">
+        <span>Smoothie de espinaca y banana</span>
+        <div>
+            <button onclick="add('Smoothie de espinaca y banana',4500)">+</button>
+        </div>
+    </div>
+
+    <div class="item">
+        <span>Smoothie de pepino y manzana verde</span>
+        <div>
+            <button onclick="add('Smoothie de pepino y manzana verde',4500)">+</button>
+        </div>
+    </div>
+
+    <div class="item">
+        <span>Smoothie de espinaca y mango</span>
+        <div>
+            <button onclick="add('Smoothie de espinaca y mango',4500)">+</button>
+        </div>
+    </div>
+
 </div>
 
 <div class="item">
@@ -461,6 +490,16 @@ function actualizarNombrePedido(){
 
 function toggleLicuado(){
     let opciones = document.getElementById("opcionesLicuado");
+
+    if(opciones.style.display === "none"){
+        opciones.style.display = "block";
+    } else {
+        opciones.style.display = "none";
+    }
+}   
+
+function toggleSmoothie(){
+    let opciones = document.getElementById("opcionesSmoothie");
 
     if(opciones.style.display === "none"){
         opciones.style.display = "block";
